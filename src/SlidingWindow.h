@@ -1,16 +1,25 @@
 #ifndef SLIDING_WINDOW_H
 #define SLIDING_WINDOW_H
+#include <vector>
 
 class SlidingWindow {
   public:
-    SlidingWindow();
-    void setWindow(int wSize) {window = wSize;}
+    SlidingWindow(int max);
+    void setWindow(int wSize) {windowSize = wSize;}
+    void setMax(int max) {{windowMax = max;}}
+    // Can sliding window be incremented
     bool canAddNew();
+    // Incrementing sliding window
     int addNew();
     int nrSeqInWin();
 
   protected:
-    int window = 0;
+    int windowMax = 0;
+    int windowSize = 0;
+    std::vector<int> acknowledgedNums;
+    std::vector<int> unacknowledgedNums;
+    std::vector<int> window;
+
 };
 
 #endif
