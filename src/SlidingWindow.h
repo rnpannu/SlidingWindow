@@ -13,6 +13,8 @@ class SlidingWindow {
     int addNew();
     int nrSeqInWin();
 
+    void acknowledge(int sequence);
+
   protected:
     int windowMax = 0;
     int windowSize = 0;
