@@ -9,6 +9,8 @@ class Receiver : public SlidingWindow {
     
     
   private:
+    //sequence number of the last in sequence frame received
+    int lastack;
 };
 
 #endif

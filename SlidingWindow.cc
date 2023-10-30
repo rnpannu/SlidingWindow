@@ -3,7 +3,8 @@
 #include "SlidingWindow.h"
 
 SlidingWindow::SlidingWindow(int max) {
-
+    setMax(max);
+    setWindow(1);
 }
 
 bool SlidingWindow::canAddNew() {
@@ -22,14 +23,15 @@ int SlidingWindow::addNew() {
     if (canAddNew) {
         int newSN = (window[window.end() - 1] + 1) % windowMax;
         if (windowSize < windowMax) {
-            
             window.push_back(newSN);
-            
+            windowSize += 1;
         } else {
             window.erase(window.begin(), window.end(), 0);
+            acknowledgedNums.erase(acknowledgedNums.begin(), acknowledgedNums.end(), 0);
             window.push_back(newSN);
 
         }
+        
         return newSN;
     } else {
         return -1;
