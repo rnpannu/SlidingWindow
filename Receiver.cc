@@ -6,5 +6,3 @@ Receiver::Receiver(int max) : SlidingWindow(max){
     setMax(max);
     setWinSize(1);
 }
-
-// TESTING SOMETHING 
