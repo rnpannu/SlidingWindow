@@ -13,7 +13,7 @@ class SenderTest : public testing::Test {
     }
 };*/
 
-TEST_F(SenderTest, setSizeTest){
+TEST_F(testSender, setSizeTest){
     Sender* w_;
     w_ = new Sender(0);
 
@@ -23,7 +23,7 @@ TEST_F(SenderTest, setSizeTest){
     delete w_;
 }
 
-TEST_F(SenderTest, addNewTest){
+TEST_F(testSender, addNewTest){
     Sender* w_;
     w_ = new Sender(0);
 
@@ -37,7 +37,7 @@ TEST_F(SenderTest, addNewTest){
     delete w_;
 }
 
-TEST_F(SenderTest, testAck){
+TEST_F(testSender, testAck){
     Sender* w_;
     w_ = new Sender(0);
 
