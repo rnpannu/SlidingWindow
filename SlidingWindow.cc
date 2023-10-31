@@ -39,8 +39,6 @@ int SlidingWindow::addNew() {
         }
         
         return newSN;
-    } else {
-        return -1;
     }
     return -1;
 }
