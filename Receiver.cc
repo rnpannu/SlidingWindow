@@ -4,5 +4,5 @@
 
 Receiver::Receiver(int max) : SlidingWindow(max){
     setMax(max);
-    setWindow(1);
+    setWinSize(1);
 }
