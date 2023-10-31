@@ -72,6 +72,7 @@ class SlidingWindow {
     // The sliding window itself with the corresponding data 
     // stored inside
     std::vector<int> window;
+    int lastack = -1;
 
 };
 

@@ -16,9 +16,9 @@ class SenderTest : public testing::Test {
 
 TEST(testSender, setSizeTest){
     SlidingWindow* w_;
-    w_ = new SlidingWindow(0);
+    w_ = new SlidingWindow(1);
 
-    w_->setWinSize(0);
+    w_->setWinSize(1);
     ASSERT_FALSE(w_->canAddNew());
 
     delete w_;
@@ -26,11 +26,14 @@ TEST(testSender, setSizeTest){
 
 TEST(testSender, addNewTest){
     SlidingWindow* w_;
-    w_ = new SlidingWindow(0);
+    w_ = new SlidingWindow(3);
 
     w_->setWinSize(2);
     EXPECT_EQ(w_->addNew(), 0);
     EXPECT_EQ(w_->nrSeqInWin(), 1);
+
+    std::cout << "HASJHAOBHROA" << std::endl;
+    w_->acknowledge(0);
     EXPECT_EQ(w_->addNew(), 1);
     EXPECT_EQ(w_->addNew(), -1);
     EXPECT_EQ(w_->nrSeqInWin(), 2);
