@@ -1,4 +1,5 @@
 #include "Sender.h"
+#include "SlidingWindow.h"
 #include "gtest/gtest.h"
 
 /*
@@ -14,8 +15,8 @@ class SenderTest : public testing::Test {
 };*/
 
 TEST(testSender, setSizeTest){
-    Sender* w_;
-    w_ = new Sender(0);
+    SlidingWindow* w_;
+    w_ = new SlidingWindow(0);
 
     w_->setWinSize(0);
     ASSERT_FALSE(w_->canAddNew());
@@ -24,8 +25,8 @@ TEST(testSender, setSizeTest){
 }
 
 TEST(testSender, addNewTest){
-    Sender* w_;
-    w_ = new Sender(0);
+    SlidingWindow* w_;
+    w_ = new SlidingWindow(0);
 
     w_->setWinSize(2);
     EXPECT_EQ(w_->addNew(), 0);
@@ -38,8 +39,8 @@ TEST(testSender, addNewTest){
 }
 
 TEST(testSender, testAck){
-    Sender* w_;
-    w_ = new Sender(0);
+    SlidingWindow* w_;
+    w_ = new SlidingWindow(0);
 
     w_->setWinSize(2);
     EXPECT_EQ(w_->addNew(), 0);
@@ -50,4 +51,9 @@ TEST(testSender, testAck){
     EXPECT_EQ(w_->nrSeqInWin(), 1);
 
     delete w_;
+}
+
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }
