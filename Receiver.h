@@ -5,7 +5,7 @@
 
 class Receiver : public SlidingWindow {
   public:
-    Receiver();
+    Receiver(int max);
     
     
   private:

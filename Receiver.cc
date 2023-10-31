@@ -1,8 +1,8 @@
 #include <iostream>
 #include <vector>
-#include "Sender.h"
+#include "Receiver.h"
 
-Receiver::Receiver(int max) : SlidingWindow(int max){
+Receiver::Receiver(int max) : SlidingWindow(max){
     setMax(max);
     setWindow(1);
 }
