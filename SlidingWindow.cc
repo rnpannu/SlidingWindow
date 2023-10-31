@@ -4,9 +4,15 @@
 
 SlidingWindow::SlidingWindow(int max) {
     setMax(max);
-    setWindow(1);
 }
 
+void SlidingWindow::setWinSize(int wSize){
+    windowSize = wSize;
+}
+
+void SlidingWindow::setMax(int max){
+    windowMax = max;
+}
 bool SlidingWindow::canAddNew() {
     if (windowSize < windowMax) {
         return true;
@@ -21,13 +27,13 @@ bool SlidingWindow::canAddNew() {
 
 int SlidingWindow::addNew() {
     if (canAddNew) {
-        int newSN = (window[window.end() - 1] + 1) % windowMax;
+        int newSN = (window.back() + 1) % windowMax;
         if (windowSize < windowMax) {
             window.push_back(newSN);
             windowSize += 1;
         } else {
-            window.erase(window.begin(), window.end(), 0);
-            acknowledgedNums.erase(acknowledgedNums.begin(), acknowledgedNums.end(), 0);
+            window.erase(window.begin());
+            acknowledgedNums.erase(acknowledgedNums.begin());
             window.push_back(newSN);
 
         }

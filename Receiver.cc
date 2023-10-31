@@ -2,8 +2,7 @@
 #include <vector>
 #include "Sender.h"
 
-Reciever::Reciever(int max) {
+Receiver::Receiver(int max) : SlidingWindow(int max){
     setMax(max);
     setWindow(1);
 }
-

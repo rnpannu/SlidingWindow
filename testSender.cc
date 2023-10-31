@@ -5,11 +5,33 @@ class SenderTest : public testing::Test {
     protected:
         Sender* w_;
     void SetUp()  override {
-        w_ = new Sender();
+        w_ = new Sender(0);
     }
     void TearDown() override {
         delete w_;
     }
 };
 
-TEST_F(SenderTest, )
+TEST_F(SenderTest, setSizeTest){
+    w_->setWinSize(0);
+    ASSERT_FALSE(w_->canAddNew());
+}
+
+TEST_F(SenderTest, addNewTest){
+    w_->setWinSize(2);
+    EXPECT_EQ(w_->addNew(), 0);
+    EXPECT_EQ(w_->nrSeqInWin(), 1);
+    EXPECT_EQ(w_->addNew(), 1);
+    EXPECT_EQ(w_->addNew(), -1);
+    EXPECT_EQ(w_->nrSeqInWin(), 2);
+}
+
+TEST_F(SenderTest, testAck){
+    w_->setWinSize(2);
+    EXPECT_EQ(w_->addNew(), 0);
+    EXPECT_EQ(w_->nrSeqInWin(), 1);
+    EXPECT_EQ(w_->addNew(), 1);
+    EXPECT_EQ(w_->nrSeqInWin(), 2);
+    w_->acknowledge(1);
+    EXPECT_EQ(w_->nrSeqInWin(), 1);
+}

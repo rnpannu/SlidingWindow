@@ -5,14 +5,13 @@
 class SlidingWindow {
   public:
     SlidingWindow(int max);
-    void setWindow(int wSize) {windowSize = wSize;}
-    void setMax(int max) {{windowMax = max;}}
+    void setWinSize(int wSize);
+    void setMax(int max);
     // Can sliding window be incremented
     bool canAddNew();
     // Incrementing sliding window
     int addNew();
     int nrSeqInWin();
-
     void acknowledge(int sequence);
 
   protected:

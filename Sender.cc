@@ -1,10 +1,8 @@
 #include <iostream>
 #include <vector>
-#include "SlidingWindow.h"
+#include "Sender.h"
 
-Sender::Sender(int size) : SlidingWindow(int size){
-
-}
+Sender::Sender(int max) : SlidingWindow(int max){}
 int Sender::retransmit(){
     return unacknowledgedNums[0];
 }
