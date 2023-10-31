@@ -26,7 +26,7 @@ bool SlidingWindow::canAddNew() {
 }
 
 int SlidingWindow::addNew() {
-    if (canAddNew) {
+    if (canAddNew()) {
         int newSN = (window.back() + 1) % windowMax;
         if (windowSize < windowMax) {
             window.push_back(newSN);
