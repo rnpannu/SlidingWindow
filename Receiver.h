@@ -5,11 +5,15 @@
 
 class Receiver : public SlidingWindow {
   public:
+    /***
+     * @brief Constructor
+     * @param max: max window size
+    */
     Receiver(int max);
     
     
   private:
-    //sequence number of the last in sequence frame received
+    // Sequence number of the last in sequence frame received
     int lastAck;
 };
 
