@@ -1,6 +1,6 @@
 CC = g++
 TESTLIBS = -lgtest  -lgtest_main -lpthread
-OBJS = SlidingWindow.o testSender.o
+OBJS = SlidingWindow.o testSender.o Sender.o Receiver.o
 # HEADERDIRS =
 # CCFLAGS = -I $(HEADERDIRS)
 
