@@ -5,7 +5,7 @@
 class Sender : public SlidingWindow {
   public:
     Sender(int size);
-    bool req(int SN);
+    //bool req(int SN);
     int retransmit();
    
 
