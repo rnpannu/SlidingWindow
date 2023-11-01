@@ -1,6 +1,6 @@
 # SlidingWindow
-Class design: For our class design, we made a base SlidingWindow class, and then created Sender and Receiver subclasses that inherit functionality from the base class. As the project grows and we start transmitting data, the Sender and Receiver subclasses will start to gain more specialized functionality themselves.
+Class design: For our class design, we made a base SlidingWindow class, and then created Sender and Receiver subclasses that inherit functionality from the base class. As the project grows and we start transmitting data, the Sender and Receiver subclasses will start to gain more specialized functionality themselves. We attempted to define specific functions for the respective classes, such as retransmit() for the sender and acknowledge() for the reciever, but we found that these were generally applicable to both classes and would be implemented the same way regardless. As stated before, we will implement unique aspects of each class when we come to deal with things such as retransmission timers.
 
-Test cases: We took into account our various conditions and outcomes for each method and ensured that we had tests to check each of our return values.
+Test cases: We took into account our various conditions and outcomes for each method and ensured that we had tests to check each of our return values. We examined different cases of expanding and sliding the window and tested the return values of different attribute getters to ensure they matched up with our theoretical image. 
 
-Build test cases: Open the project folder in the terminal. Write commands make clean, make, and run the test executable to see the test cases run.
+Build test cases: Open the project folder in the terminal. Write commands make clean, make, and run the test executable (type testSH_Sender for Sender tests, testSH_Receiver for Receiver tests) to see the test cases run.
