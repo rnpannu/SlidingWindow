@@ -12,6 +12,7 @@ class Receiver : public SlidingWindow {
     Receiver(int max);
     
     void acknowledge(int SN); 
+    int retransmit();
     
     
   private:
