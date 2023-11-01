@@ -11,6 +11,8 @@ class Receiver : public SlidingWindow {
     */
     Receiver(int max);
     
+    void acknowledge(int SN); 
+    
     
   private:
     // Sequence number of the last in sequence frame received
