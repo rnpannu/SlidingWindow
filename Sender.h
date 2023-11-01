@@ -16,6 +16,14 @@ class Sender : public SlidingWindow {
      * @return Returns the sequence number of the unacknowledged data being transmitted
     */
     int retransmit();
+
+    /***
+     * @brief Acknowledges that a sequence number has been sent and places it in
+     * the acknowledgedNums vector. Also removes from unacknowledgedNums if
+     * present there.
+     * @param: Takes in the sequence number of the acknowledged data
+    */
+    void acknowledge(int SN); 
    
 
 

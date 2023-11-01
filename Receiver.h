@@ -20,6 +20,13 @@ class Receiver : public SlidingWindow {
      *  acknowledged 
     */
     void acknowledge(int SN); 
+    /***
+     * @brief Retransmits data that went unacknowledged
+     * @return: The sequence number that is being of the data being
+     * retransmitted
+     * 
+    */
+    int retransmit();
     
     
   private:

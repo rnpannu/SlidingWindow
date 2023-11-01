@@ -45,12 +45,7 @@ class SlidingWindow {
      * @param sequence: The sequence number that is being 
      *  acknowledged 
     */
-
-    /***
-     * @brief Virtual function for the implementation of acknowledge
-     * @param sequence: The sequence number of the data being acknowledge
-    */
-    virtual void acknowledge(int sequence);
+    virtual void acknowledge(int sequence) = 0;
 
     /***
      * @brief Virtual function for the implementation of retransmit
