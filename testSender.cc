@@ -15,12 +15,12 @@ protected:
     }
 };
 
-TEST_F(SenderTest, setSizeTest){
+TEST_F(SenderTest, SendersetSizeTest){
     w_->setWinSize(0);
     ASSERT_FALSE(w_->canAddNew());
 }
 
-TEST_F(SenderTest, addNewTest){
+TEST_F(SenderTest, SenderaddNewTest){
     w_->setWinSize(2);
     EXPECT_EQ(w_->addNew(), 0);
     EXPECT_EQ(w_->nrSeqInWin(), 1);
@@ -29,7 +29,7 @@ TEST_F(SenderTest, addNewTest){
     EXPECT_EQ(w_->nrSeqInWin(), 2);
 }
 
-TEST_F(SenderTest, testAck){
+TEST_F(SenderTest, SendertestAck){
     w_->setWinSize(2);
     EXPECT_EQ(w_->addNew(), 0);
     EXPECT_EQ(w_->nrSeqInWin(), 1);
