@@ -1,6 +1,6 @@
 CC = g++
 TESTLIBS = -lgtest  -lgtest_main -lpthread
-OBJS = SlidingWindow.o testSender.o Sender.o Receiver.o
+OBJS = SlidingWindow.o testSender.o testReceiver.o Sender.o Receiver.o
 # HEADERDIRS =
 # CCFLAGS = -I $(HEADERDIRS)
 
@@ -19,3 +19,4 @@ clean :
 
 ## include the generated dependency files
 -include $(addsuffix .d,$(basename $(OBJS)))
+
