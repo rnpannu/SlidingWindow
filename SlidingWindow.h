@@ -14,35 +14,28 @@ class SlidingWindow {
      * @brief Sets the windowSize of the SlidingWindow object
      * @param wSize: size of window
     */
-    void setWinSize(int wSize);
+    virtual void setWinSize(int wSize);
 
-    /***
-     * @brief Sets the windowMax value to define the maximum 
-     * window size
-     * @param max: max window size
-    */
-    void setMax(int max);
-    
     /***
      * @brief Can the sliding window be incremented
      * @return true: sliding window can be incremented
      *         false: slidinw window cannot be incremented
     */
-    bool canAddNew();
+    virtual bool canAddNew();
     
     /***
      * @brief Increment the sliding window
      * @return -1: Sliding window cannot be incremented
      *      newSN: The sequence number of the added frame
     */
-    int addNew();
+    virtual int addNew();
 
     /***
      * @brief Returns the number of frames in the sliding 
      *  window
      * @return The size of unacknowledgedNums 
     */
-    int nrSeqInWin();
+    virtual int nrSeqInWin();
 
     /***
      * @brief Adds the acknowledged sequence number to the 
@@ -52,13 +45,13 @@ class SlidingWindow {
      * @param sequence: The sequence number that is being 
      *  acknowledged 
     */
-    void acknowledge(int sequence);
+    virtual void acknowledge(int sequence);
+
+    virtual int retransmit() = 0;
+
 
   protected:
     // Maximum size of the sliding window
-    int windowMax = 0;
-
-    // Current size of the sliding window
     int windowSize = 0;
 
     // Contains all sequence numbers that have been 
@@ -72,7 +65,8 @@ class SlidingWindow {
     // The sliding window itself with the corresponding data 
     // stored inside
     std::vector<int> window;
-    int lastack = -1;
+
+    int maxSN;
 
 };
 
