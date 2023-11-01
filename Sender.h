@@ -9,7 +9,6 @@ class Sender : public SlidingWindow {
      * @param size: window size
     */
     Sender(int size);
-    //bool req(int SN);
 
     /***
      * @brief Retransmits data that has gone unacknowledged.

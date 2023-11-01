@@ -7,18 +7,12 @@ SlidingWindow::SlidingWindow(int max) {
 }
 
 void SlidingWindow::setWinSize(int wSize){
-    // Invalid
+
     if (wSize > maxSN) {
         std::cout << "Size cannot be greater than integer range" << std::endl;
         return;
     }
-    /*Expanding Window 
-    for (int i = window.size(); i < wSize; ++i) {
-        window.push_back(i);
-        unacknowledgedNums.push_back(i % windowMax);
-    }
-    //Note: Constricting window check later
-    */
+
     windowSize = wSize;
 }
 
@@ -63,15 +57,4 @@ int SlidingWindow::addNew() {
 
 int SlidingWindow::nrSeqInWin() {
     return unacknowledgedNums.size();
-}
-
-void SlidingWindow::acknowledge(int sequence) {
-    // Adds acknowledged sequence number to the acknowledged nums vector.
-    acknowledgedNums.push_back(sequence);
-    // Loop that removes sequence number from the unacknowledged frames if it exists there.
-    for (int i = 0; i < unacknowledgedNums.size(); i++) {
-        if (sequence == unacknowledgedNums[i]) {
-            unacknowledgedNums.erase(unacknowledgedNums.begin() + (i - 1));
-        }
-    }
 }
