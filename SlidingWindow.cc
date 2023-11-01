@@ -3,13 +3,13 @@
 #include "SlidingWindow.h"
 
 SlidingWindow::SlidingWindow(int max) {
-    setMax(max);
+    maxSN = max;
 }
 
 void SlidingWindow::setWinSize(int wSize){
     // Invalid
-    if (windowSize > windowMax) {
-        std::cout << "Size cannot be greater than max window" << std::endl;
+    if (wSize > maxSN) {
+        std::cout << "Size cannot be greater than integer range" << std::endl;
         return;
     }
     /*Expanding Window 
@@ -22,37 +22,40 @@ void SlidingWindow::setWinSize(int wSize){
     windowSize = wSize;
 }
 
-void SlidingWindow::setMax(int max){
-    windowMax = max;
-}
 bool SlidingWindow::canAddNew() {
-    if (windowSize < windowMax) {
+    // Available space in window
+    if (window.size() < windowSize){
         return true;
+    } else if (window.size() == windowSize){
+        for (int i = 0; i < acknowledgedNums.size(); i++) {
+            if (acknowledgedNums[i] == window[0]) {
+                return true;
+            }
     }
-    // Size and max are the same
-    for (int i = 0; i < acknowledgedNums.size(); i++) {
-        if (acknowledgedNums[i] == window[0]) {
-            return true;
-        }
     }
+   
     return false;
 }
 
 int SlidingWindow::addNew() {
     if (canAddNew()) {
-        int newSN = (lastack + 1) % windowMax;
-        if (windowSize < windowMax) {
-            window.push_back(newSN);
-            unacknowledgedNums.push_back(newSN);
-            windowSize += 1;
+        int newSN;
+        // Size available to expand
+        if (window.size() < windowSize){
+            if (window.size() == 0){
+                newSN = 0;
+            } else{
+                newSN = (window.back() + 1) % maxSN;
+            }
+            
+        // Size not available but can slide
         } else {
+            newSN = (window.back() + 1) % maxSN;
             window.erase(window.begin());
             acknowledgedNums.erase(acknowledgedNums.begin());
-            window.push_back(newSN);
-            unacknowledgedNums.push_back(newSN);
-
         }
-        
+        window.push_back(newSN);
+        unacknowledgedNums.push_back(newSN);
         return newSN;
     }
     return -1;
@@ -65,7 +68,6 @@ int SlidingWindow::nrSeqInWin() {
 void SlidingWindow::acknowledge(int sequence) {
     // Adds acknowledged sequence number to the acknowledged nums vector.
     acknowledgedNums.push_back(sequence);
-    lastack = sequence;
     // Loop that removes sequence number from the unacknowledged frames if it exists there.
     for (int i = 0; i < unacknowledgedNums.size(); i++) {
         if (sequence == unacknowledgedNums[i]) {
