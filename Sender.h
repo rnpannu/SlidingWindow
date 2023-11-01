@@ -7,6 +7,7 @@ class Sender : public SlidingWindow {
     Sender(int size);
     //bool req(int SN);
     int retransmit();
+    void acknowledge(int SN); 
    
 
 
