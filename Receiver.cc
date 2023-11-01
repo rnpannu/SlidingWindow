@@ -19,3 +19,8 @@ void Receiver::acknowledge(int sequence) {
     //Unique to reciever, increments last acknowledged frame.
     lastAck += 1;
 }
+
+
+int Receiver::retransmit(){
+    return unacknowledgedNums[0];
+}
