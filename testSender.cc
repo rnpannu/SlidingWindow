@@ -1,50 +1,35 @@
-#include "Sender.h"
 #include "SlidingWindow.h"
+#include "Sender.h"
 #include "gtest/gtest.h"
 
-/*
+
 class SenderTest : public testing::Test {
-    protected:
-        Sender* w_;
-    void SetUp()  override {
-        w_ = new Sender(0);
+protected:
+    SlidingWindow* w_;
+
+    void SetUp() override {
+        w_ = new Sender(3);
     }
     void TearDown() override {
         delete w_;
     }
-};*/
+};
 
-TEST(testSender, setSizeTest){
-    SlidingWindow* w_;
-    w_ = new SlidingWindow(1);
-
-    w_->setWinSize(1);
+TEST_F(SenderTest, setSizeTest){
+    w_->setWinSize(0);
     ASSERT_FALSE(w_->canAddNew());
-
-    delete w_;
 }
 
-TEST(testSender, addNewTest){
-    SlidingWindow* w_;
-    w_ = new SlidingWindow(3);
-
+TEST_F(SenderTest, addNewTest){
     w_->setWinSize(2);
     EXPECT_EQ(w_->addNew(), 0);
     EXPECT_EQ(w_->nrSeqInWin(), 1);
-
-    std::cout << "HASJHAOBHROA" << std::endl;
-    w_->acknowledge(0);
     EXPECT_EQ(w_->addNew(), 1);
     EXPECT_EQ(w_->addNew(), -1);
     EXPECT_EQ(w_->nrSeqInWin(), 2);
-
-    delete w_;
 }
 
-TEST(testSender, testAck){
-    SlidingWindow* w_;
-    w_ = new SlidingWindow(0);
-
+TEST_F(SenderTest, testAck){
     w_->setWinSize(2);
     EXPECT_EQ(w_->addNew(), 0);
     EXPECT_EQ(w_->nrSeqInWin(), 1);
@@ -52,8 +37,6 @@ TEST(testSender, testAck){
     EXPECT_EQ(w_->nrSeqInWin(), 2);
     w_->acknowledge(1);
     EXPECT_EQ(w_->nrSeqInWin(), 1);
-
-    delete w_;
 }
 
 int main(int argc, char **argv) {
